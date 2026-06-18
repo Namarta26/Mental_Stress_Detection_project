@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Mental Stress Detection{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+                <h1>Smart Mental Stress Detection and Risk Prediction System</h1>
+                <p class="lead">
+                    Predict student stress level using academic, lifestyle, and mental health factors.
+                    The system classifies stress as Low, Medium, or High and provides useful recommendations.
+                </p>
+                <a class="btn btn-primary" href="{{ url_for('prediction') }}">Start Prediction</a>
+                <a class="btn btn-outline-dark ms-2" href="{{ url_for('dashboard') }}">View Dashboard</a>
+            </div>
+            <div class="col-lg-5">
+                <div class="info-panel">
+                    <h2>Stress Insights</h2>
+                    <p>
+                        Analyze key student wellness indicators and identify stress risk with clear, actionable results.
+                    </p>
+                    <div class="metric-grid">
+                        <div><strong>5</strong><span>Algorithms</span></div>
+                        <div><strong>6</strong><span>Inputs</span></div>
+                        <div><strong>3</strong><span>Stress Levels</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="feature-card">
+                <h3>Dataset</h3>
+                <p>Student Depression Dataset from Kaggle, adapted for stress level prediction.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card">
+                <h3>Prediction</h3>
+                <p>Uses six important student inputs to calculate Low, Medium, or High stress risk.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card">
+                <h3>Dashboard</h3>
+                <p>Compares accuracy, precision, recall, F1 score, and training time.</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

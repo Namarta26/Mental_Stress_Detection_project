@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | Mental Stress Detection{% endblock %}
+
+{% block content %}
+<section class="container py-5">
+    <div class="page-heading">
+        <p class="section-label">Model Comparison</p>
+        <h1>Performance Dashboard</h1>
+        <p>Compare machine learning algorithms using evaluation metrics.</p>
+    </div>
+
+    {% if metrics %}
+        <div class="table-responsive dashboard-panel">
+            <table class="table align-middle">
+                <thead>
+                    <tr>
+                        <th>Algorithm</th>
+                        <th>Accuracy</th>
+                        <th>Precision</th>
+                        <th>Recall</th>
+                        <th>F1 Score</th>
+                        <th>ROC-AUC</th>
+                        <th>Training Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in metrics %}
+                        <tr>
+                            <td>{{ row.algorithm }}</td>
+                            <td>{{ row.accuracy }}</td>
+                            <td>{{ row.precision }}</td>
+                            <td>{{ row.recall }}</td>
+                            <td>{{ row.f1_score }}</td>
+                            <td>{{ row.roc_auc }}</td>
+                            <td>{{ row.training_time }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="dashboard-panel mt-4">
+            <h2>Visual Charts</h2>
+            <div class="performance-chart" aria-label="Model performance comparison chart">
+                <div class="chart-legend" aria-label="Chart metric legend">
+                    <span><i class="legend-accuracy"></i>Accuracy</span>
+                    <span><i class="legend-precision"></i>Precision</span>
+                    <span><i class="legend-recall"></i>Recall</span>
+                    <span><i class="legend-f1"></i>F1 Score</span>
+                    <span><i class="legend-roc"></i>ROC-AUC</span>
+                </div>
+                <div class="performance-plot">
+                    <div class="y-axis">
+                        <span>1.0</span>
+                        <span>0.8</span>
+                        <span>0.6</span>
+                        <span>0.4</span>
+                        <span>0.2</span>
+                        <span>0.0</span>
+                    </div>
+                    <div class="plot-area">
+                        <div class="grid-lines" aria-hidden="true">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="metric-groups">
+                            {% for row in metrics %}
+                                <div class="metric-group">
+                                    <div
+                                        class="metric-bar metric-accuracy"
+                                        style="height: {{ row.accuracy * 100 }}%"
+                                        title="{{ row.algorithm }} Accuracy: {{ row.accuracy }}"
+                                    ></div>
+                                    <div
+                                        class="metric-bar metric-precision"
+                                        style="height: {{ row.precision * 100 }}%"
+                                        title="{{ row.algorithm }} Precision: {{ row.precision }}"
+                                    ></div>
+                                    <div
+                                        class="metric-bar metric-recall"
+                                        style="height: {{ row.recall * 100 }}%"
+                                        title="{{ row.algorithm }} Recall: {{ row.recall }}"
+                                    ></div>
+                                    <div
+                                        class="metric-bar metric-f1"
+                                        style="height: {{ row.f1_score * 100 }}%"
+                                        title="{{ row.algorithm }} F1 Score: {{ row.f1_score }}"
+                                    ></div>
+                                    <div
+                                        class="metric-bar metric-roc"
+                                        style="height: {{ row.roc_auc * 100 }}%"
+                                        title="{{ row.algorithm }} ROC-AUC: {{ row.roc_auc }}"
+                                    ></div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="x-labels">
+                    {% for row in metrics %}
+                        <span>
+                            {% if row.algorithm == "K-Nearest Neighbors" %}
+                                KNN
+                            {% elif row.algorithm == "Support Vector Machine" %}
+                                SVM
+                            {% else %}
+                                {{ row.algorithm }}
+                            {% endif %}
+                        </span>
+                    {% endfor %}
+                </div>
+                <div class="axis-title">Model</div>
+            </div>
+        </div>
+        {% if confusion_matrix %}
+            <div class="dashboard-panel mt-4">
+                <h2>Confusion Matrix</h2>
+                <div class="table-responsive">
+                    <table class="table confusion-table">
+                        <thead>
+                            <tr>
+                                <th>Actual \ Predicted</th>
+                                {% for label in confusion_labels %}
+                                    <th>{{ label }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in confusion_matrix %}
+                                <tr>
+                                    <th>{{ confusion_labels[loop.index0] }}</th>
+                                    {% for value in row %}
+                                        <td>{{ value }}</td>
+                                    {% endfor %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="dashboard-panel">
+            <h2>No trained metrics yet</h2>
+            <p class="text-muted">
+                Add your dataset as stress_dataset.csv and run python train_model.py.
+                The dashboard will show model comparison after training.
+            </p>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}
