@@ -3,6 +3,10 @@
 This is a Flask-based web application for predicting student stress levels without using Streamlit.
 The frontend uses local HTML, CSS, and JavaScript files.
 
+## Project Report
+
+A detailed project report is available in [PROJECT_REPORT.md](PROJECT_REPORT.md).
+
 ## Technology Stack
 
 - Frontend: HTML, CSS, JavaScript
