@@ -28,15 +28,11 @@ The problem addressed by this project is the need for a simple, local, and user-
 
 ## 4. Literature Review
 
-Mental stress detection has become an important research area because stress can affect learning ability, concentration, emotional health, and academic performance. Many existing studies show that stress can be analyzed using behavioral, academic, physiological, and lifestyle-related data. In student-focused systems, common factors include sleep duration, study workload, academic pressure, screen time, social interaction, financial stress, and satisfaction with studies.
+Mental stress detection is an important area because stress affects students' learning, concentration, health, and academic performance. Existing studies show that stress can be predicted using academic, lifestyle, and mental health factors such as sleep hours, study workload, academic pressure, financial stress, and mood.
 
-Traditional stress assessment methods usually depend on questionnaires, counseling sessions, or manual observation. Although these methods can be useful, they may require expert involvement and may not provide quick feedback. Machine learning-based approaches can support early stress identification by learning patterns from historical student data and predicting stress categories from new input values.
+Traditional stress assessment methods depend on questionnaires or manual observation, which may take more time. Machine learning can support faster prediction by learning patterns from student data. Common algorithms used for stress and mental health prediction include Logistic Regression, Decision Tree, Random Forest, K-Nearest Neighbors, and Support Vector Machine.
 
-Several machine learning algorithms are commonly used for mental health and stress prediction. Logistic Regression is useful as a simple baseline classifier. Decision Tree models are easy to understand because they classify data using rule-like conditions. Random Forest improves prediction stability by combining multiple decision trees. K-Nearest Neighbors classifies data based on similarity with nearby records, while Support Vector Machine is effective for classification problems where clear separation between classes is required.
-
-Previous work in student stress and depression prediction also highlights the importance of preprocessing, feature scaling, and model evaluation. Accuracy alone is not always enough, so precision, recall, F1 score, ROC-AUC, and confusion matrix are used to understand model performance more clearly. This project follows a similar approach by comparing multiple machine learning algorithms and presenting their results through a dashboard.
-
-The literature shows that a practical stress detection system should not only predict a class label but also present the result in a simple and understandable way. Therefore, this project combines prediction, risk score calculation, and recommendation generation inside a Flask-based web application.
+This project follows a similar approach by comparing multiple machine learning models and presenting stress prediction results through a simple Flask web application with recommendations.
 
 ## 5. Scope of the Project
 
