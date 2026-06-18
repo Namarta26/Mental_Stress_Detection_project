@@ -26,7 +26,19 @@ Students often face stress due to academic workload, pressure to perform, poor s
 
 The problem addressed by this project is the need for a simple, local, and user-friendly web system that can estimate student stress level early and present the result in an understandable way.
 
-## 4. Scope of the Project
+## 4. Literature Review
+
+Mental stress detection has become an important research area because stress can affect learning ability, concentration, emotional health, and academic performance. Many existing studies show that stress can be analyzed using behavioral, academic, physiological, and lifestyle-related data. In student-focused systems, common factors include sleep duration, study workload, academic pressure, screen time, social interaction, financial stress, and satisfaction with studies.
+
+Traditional stress assessment methods usually depend on questionnaires, counseling sessions, or manual observation. Although these methods can be useful, they may require expert involvement and may not provide quick feedback. Machine learning-based approaches can support early stress identification by learning patterns from historical student data and predicting stress categories from new input values.
+
+Several machine learning algorithms are commonly used for mental health and stress prediction. Logistic Regression is useful as a simple baseline classifier. Decision Tree models are easy to understand because they classify data using rule-like conditions. Random Forest improves prediction stability by combining multiple decision trees. K-Nearest Neighbors classifies data based on similarity with nearby records, while Support Vector Machine is effective for classification problems where clear separation between classes is required.
+
+Previous work in student stress and depression prediction also highlights the importance of preprocessing, feature scaling, and model evaluation. Accuracy alone is not always enough, so precision, recall, F1 score, ROC-AUC, and confusion matrix are used to understand model performance more clearly. This project follows a similar approach by comparing multiple machine learning algorithms and presenting their results through a dashboard.
+
+The literature shows that a practical stress detection system should not only predict a class label but also present the result in a simple and understandable way. Therefore, this project combines prediction, risk score calculation, and recommendation generation inside a Flask-based web application.
+
+## 5. Scope of the Project
 
 This project focuses on student mental stress prediction using a Flask web application and machine learning concepts. The current system includes:
 
@@ -38,7 +50,7 @@ This project focuses on student mental stress prediction using a Flask web appli
 
 The system is intended for academic and demonstration purposes. It should not be used as a medical diagnosis tool.
 
-## 5. Technology Stack
+## 6. Technology Stack
 
 | Layer | Technology Used |
 |---|---|
@@ -50,7 +62,7 @@ The system is intended for academic and demonstration purposes. It should not be
 | Reports | CSV files |
 | Development Environment | Python virtual environment |
 
-## 6. Dataset Description
+## 7. Dataset Description
 
 The project is based on a student mental health and depression-related dataset adapted for stress prediction.
 
@@ -67,7 +79,7 @@ The training script checks for the dataset using these possible file names:
 - `Stress_ dataset.csv`
 - `Stress_ Dataset.csv`
 
-## 7. Input Features
+## 8. Input Features
 
 The system uses the following feature columns:
 
@@ -90,7 +102,7 @@ The system uses the following feature columns:
 
 The current prediction form accepts the most important fields from the user and assigns default values for additional features required by the model structure.
 
-## 8. System Architecture
+## 9. System Architecture
 
 The project follows a simple web-based architecture:
 
@@ -102,17 +114,17 @@ The project follows a simple web-based architecture:
 6. The predicted stress level and recommendations are displayed to the user.
 7. The dashboard reads saved CSV report files and displays model performance.
 
-## 9. Module Description
+## 10. Module Description
 
-### 9.1 Home Module
+### 10.1 Home Module
 
 The home page introduces the project, explains the purpose of stress prediction, and provides navigation to the prediction and dashboard pages.
 
-### 9.2 Prediction Module
+### 10.2 Prediction Module
 
 The prediction page collects user inputs such as age, CGPA, study hours, sleep hours, academic pressure, and financial stress. After form submission, the system calculates a risk score and classifies the student into one of the stress categories.
 
-### 9.3 Recommendation Module
+### 10.3 Recommendation Module
 
 The recommendation module provides suggestions according to the predicted stress level.
 
@@ -122,7 +134,7 @@ The recommendation module provides suggestions according to the predicted stress
 | Medium | Improve sleep, reduce screen time, and include breaks |
 | High | Seek support, reduce overload, and prioritize health |
 
-### 9.4 Dashboard Module
+### 10.4 Dashboard Module
 
 The dashboard displays:
 
@@ -135,11 +147,11 @@ The dashboard displays:
 - Training time
 - Confusion matrix
 
-### 9.5 Training Module
+### 10.5 Training Module
 
 The `train_model.py` script performs dataset loading, preprocessing, model training, evaluation, and report generation.
 
-## 10. Data Preprocessing
+## 11. Data Preprocessing
 
 The preprocessing workflow includes:
 
@@ -153,7 +165,7 @@ The preprocessing workflow includes:
 
 The dataset is split using an 80:20 train-test ratio with stratification.
 
-## 11. Machine Learning Algorithms
+## 12. Machine Learning Algorithms
 
 The following algorithms are compared in the training script:
 
@@ -165,7 +177,7 @@ The following algorithms are compared in the training script:
 | K-Nearest Neighbors | Distance-based classification model |
 | Support Vector Machine | Margin-based classification model |
 
-## 12. Evaluation Metrics
+## 13. Evaluation Metrics
 
 The models are evaluated using:
 
@@ -179,7 +191,7 @@ The models are evaluated using:
 
 These metrics help compare both prediction quality and training efficiency.
 
-## 13. Experimental Results
+## 14. Experimental Results
 
 The following results are stored in `reports/model_metrics.csv`:
 
@@ -193,7 +205,7 @@ The following results are stored in `reports/model_metrics.csv`:
 
 Based on the saved evaluation results, Support Vector Machine achieved the highest accuracy of 87.38% and the highest ROC-AUC score of 0.9450. However, it also required the longest training time.
 
-## 14. Confusion Matrix
+## 15. Confusion Matrix
 
 The confusion matrix saved in `reports/confusion_matrix.csv` is:
 
@@ -205,13 +217,13 @@ The confusion matrix saved in `reports/confusion_matrix.csv` is:
 
 The model performs strongly for the High and Medium classes. Some confusion exists between Medium and High stress levels, which is expected because these categories may share similar symptoms and feature values.
 
-## 15. Result Interpretation
+## 16. Result Interpretation
 
 The project successfully predicts stress category and presents the result in a user-friendly format. The dashboard shows that all evaluated models perform reasonably well, with SVM giving the best overall result in the current experiment.
 
 The risk score helps users understand the severity of their stress condition in percentage form. The recommendation section makes the output more useful by suggesting practical lifestyle improvements.
 
-## 16. Project Folder Structure
+## 17. Project Folder Structure
 
 ```text
 Mental_Stress_Detection_project/
@@ -245,7 +257,7 @@ Mental_Stress_Detection_project/
 |   |-- dashboard.html
 ```
 
-## 17. How to Run the Project
+## 18. How to Run the Project
 
 Create and activate a virtual environment:
 
@@ -278,7 +290,7 @@ Train the machine learning models:
 python train_model.py
 ```
 
-## 18. Advantages
+## 19. Advantages
 
 - Simple and user-friendly web interface.
 - Runs locally without external APIs.
@@ -287,14 +299,14 @@ python train_model.py
 - Includes dashboard-based performance visualization.
 - Uses common and easy-to-install Python libraries.
 
-## 19. Limitations
+## 20. Limitations
 
 - The application is for academic use and does not provide medical diagnosis.
 - The prediction form currently uses a reduced set of user inputs and default values for some model features.
 - Model performance depends on dataset quality and feature availability.
 - More real-world validation is required before practical deployment.
 
-## 20. Future Enhancements
+## 21. Future Enhancements
 
 - Add all feature inputs to the prediction form.
 - Load and use the saved trained model directly during prediction.
@@ -304,7 +316,7 @@ python train_model.py
 - Deploy the application on a cloud platform.
 - Add more mental wellness indicators for better prediction accuracy.
 
-## 21. Conclusion
+## 22. Conclusion
 
 The Smart Mental Stress Detection and Risk Prediction System is a useful machine learning-based web application for estimating student stress levels. It combines Flask, frontend web technologies, and scikit-learn to provide prediction, recommendations, and model performance analysis.
 
